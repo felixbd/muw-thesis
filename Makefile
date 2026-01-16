@@ -33,8 +33,9 @@ PDF_STANDARD := "a-3b"
 
 # Typst compilation flags
 # Date formats: --iso-8601=min, --rfc-3339=sec, --rfc-email
-# Additional options: --font-path ~/fonts/, --make-deps, --ignore-system-fonts
-FLAGS := --pdf-standard $(PDF_STANDARD) \
+# Additional options: --font-path ~/fonts/, --make-deps, --ignore-system-fonts, --timings, --open firefox
+FLAGS := --root=./ \
+	--pdf-standard $(PDF_STANDARD) \
 	--input gitversion=$(GIT_VERSION) \
 	--input date="`date`"
 
@@ -63,6 +64,14 @@ c: clean
 .PHONY: clean
 clean:
 	rm -f $(OUT)
+
+.PHONY: thumbnail
+thumbnail:
+	$(TYPST) compile -f png --pages '1,2,3-6,8-' --ppi 250 $(SRC) "thumbnail-page-{0p}-of-{t}.png"
+
+.PHONY: check
+check:
+	nix run github:typst/package-check -- check
 
 # Publishing example:
 # rsync -avPz --mkpath -e 'ssh' ./*.pdf domain:/path/to/public-thesis-dir/
