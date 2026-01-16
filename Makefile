@@ -28,8 +28,9 @@ PDF_STANDARD := "a-3b"  # "a-1b"
 
 FLAGS := --pdf-standard $(PDF_STANDARD) \
 	--input gitversion=$(GIT_VERSION) \
-	--input date="`date`"  # date {--iso-8601=min, --rfc-3339=sec, --rfc-email}
+	--input date="`date`"
 
+# date {--iso-8601=min, --rfc-3339=sec, --rfc-email}
 # --font-path ~/fonts/ \
 # --make-deps --ignore-system-fonts
 
@@ -38,22 +39,24 @@ SRC := main.typ
 OUT := main.pdf
 
 
+default: $(OUT) open
+# default: w
+
 $(OUT): $(SRC)
-	$(TYPST) compile $(FLAGS) $@ $(OUT)
+	$(TYPST) compile $(FLAGS) $< $@
 
 
 w: watch
 
-watch:
+watch: $(OUT) open
 	# note: date will not update when recompiled
 	$(TYPST) watch $(FLAGS) $(SRC) $(OUT)
 
 
 o: open
 
-.PHONY: open
 open: $(OUT)
-	xdg-open $(OUT)
+	@xdg-open $(OUT)  # firefox
 
 
 # ps2pdf -dPDFSETTINGS=/ebook $(OUT) "./thesis-compressed.pdf"
