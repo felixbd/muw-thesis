@@ -34,13 +34,14 @@ PDF_STANDARD := "a-3b"
 # Typst compilation flags
 # Date formats: --iso-8601=min, --rfc-3339=sec, --rfc-email
 # Additional options: --font-path ~/fonts/, --make-deps, --ignore-system-fonts, --timings, --open firefox
-FLAGS := --root=./ \
+FLAGS := --root=./thesis/ \
 	--pdf-standard $(PDF_STANDARD) \
 	--input gitversion=$(GIT_VERSION) \
 	--input date="`date`"
 
-SRC := main.typ
-OUT := main.pdf
+SRC := ./thesis/main.typ
+OUT := ./thesis-out.pdf
+# "./thesis-`date --iso-8601=sec`.pdf"
 
 
 default: $(OUT) open
