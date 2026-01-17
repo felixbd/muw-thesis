@@ -1,6 +1,20 @@
 # muw-thesis
 Medical University of Vienna thesis template
 
+> [!NOTE]
+> This is not an official template, but it is strongly based on one.
+> The target audience is primarily medical informatics graduates from MedUni,
+> but this template can also be used for writing dissertations in medicine,
+> dentistry or molecular precision medicine.
+> It should also be fairly easy to adapt for doctoral programmes or PhDs.
+> 
+> - https://www.meduniwien.ac.at/web/studierende/service-center/meduni-wien-vorlagen/
+> - https://www.meduniwien.ac.at/web/studierende/mein-studium/masterstudium-medizinische-informatik/masterarbeit/
+> - https://ub.meduniwien.ac.at/fileadmin/content/OE/ub/dokumente/MusterfuerAbschlussarbeit2025.docx
+> - https://www.meduniwien.ac.at/web/studierende/mein-studium/diplomstudium-humanmedizin/diplomarbeit/
+> - https://ub.meduniwien.ac.at/services/plagiatspruefung/
+
+
 ## Building
 
 Build the thesis using `make`:
