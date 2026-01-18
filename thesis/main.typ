@@ -1,25 +1,31 @@
 #import "@preview/bookly:1.1.2": *
 
 #let config-colors = (
-  primary: rgb("#1d90d0"),
+  primary: rgb("#111D4E"),
   secondary: rgb("#dddddd").darken(15%)
 )
 
+#let muw-logo(..args) = image("./images/logo/MedUni-Wien.svg", ..args)
+
 #show: bookly.with(
   author: "Author Name",
-  theme: modern,
-  // theme: classic,
-  // theme: orly,
-  // theme: pretty,
+  
+  theme: classic,  // classic fancy modern orly pretty
+
   // tufte: true,
-  // lang: "fr",
-  // colors: config-colors,
-  title-page: book-title-page(
-    series: "Typst book series",
-    institution: "Typst community",
-    logo: image("images/typst-logo.svg"),
-    cover: image("images/book-cover.jpg", width: 45%)
-  )
+  lang: "de",
+  colors: config-colors,
+  logo: muw-logo(),  
+  
+  // title-page: book-title-page(
+  //   series: "Typst book series",
+  //   institution: "Typst community",
+  //   logo: image("images/typst-logo.svg"),
+  //   cover: image("images/book-cover.jpg", width: 45%)
+  // )
+
+  title-page: include "cover.typ",
+
 )
 
 #show: front-matter
@@ -48,4 +54,11 @@
 #bibliography("bibliography/sample.bib")
 
 
-#back-cover(resume: lorem(100), abstract: lorem(100), logo: (align(left)[#image("images/typst-logo.svg", width: 50%)], align(right)[#image("images/typst-logo.svg", width: 50%)]))
+#back-cover(
+  resume: lorem(100),
+  abstract: lorem(100),
+  logo: (
+    align(left)[#muw-logo(width: 70%)],
+    align(right)[#image("images/typst-logo.svg", width: 50%)]
+  )
+)

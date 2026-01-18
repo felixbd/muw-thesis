@@ -15,6 +15,9 @@ Medical University of Vienna thesis template
 > - https://ub.meduniwien.ac.at/services/plagiatspruefung/
 
 
+### see [pdf](./thesis-out.pdf)
+
+
 ## Building
 
 Build the thesis using `make`:
