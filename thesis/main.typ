@@ -1,4 +1,6 @@
-#import "@preview/bookly:1.1.2": *
+#import "@preview/bookly:2.0.0": *
+
+#include "./preamble.typ"
 
 #let config-colors = (
   primary: rgb("#111D4E"),
@@ -55,8 +57,7 @@
 
 
 #back-cover(
-  resume: lorem(100),
-  abstract: lorem(100),
+  abstracts: ((title: [Abstracts], text: lorem(100)), ),
   logo: (
     align(left)[#muw-logo(width: 70%)],
     align(right)[#image("images/typst-logo.svg", width: 50%)]
