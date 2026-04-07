@@ -1,9 +1,19 @@
 #import "@preview/bookly:2.0.0": *
 
+#import "./preamble.typ" as preamble
 #include "./preamble.typ"
 
+#import "preamble.typ": *
+// #show: document => my-config(document)
+#show: doc => my-config(
+  is-draft: true,
+  doc
+)
+
+
+
 #let config-colors = (
-  primary: rgb("#111D4E"),
+  primary: preamble.dunkelblau,
   secondary: rgb("#dddddd").darken(15%)
 )
 

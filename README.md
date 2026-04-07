@@ -4,8 +4,7 @@ Medical University of Vienna thesis template
 > [!NOTE]
 > This is not an official template, but it is strongly based on one.
 > The target audience is primarily medical informatics graduates from MedUni,
-> but this template can also be used for writing dissertations in medicine,
-> dentistry or molecular precision medicine.
+> but this template can also be used for medicine, dentistry or molecular precision medicine.
 > It should also be fairly easy to adapt for doctoral programmes or PhDs.
 > 
 > - https://www.meduniwien.ac.at/web/studierende/service-center/meduni-wien-vorlagen/
@@ -13,6 +12,8 @@ Medical University of Vienna thesis template
 > - https://ub.meduniwien.ac.at/fileadmin/content/OE/ub/dokumente/MusterfuerAbschlussarbeit2025.docx
 > - https://www.meduniwien.ac.at/web/studierende/mein-studium/diplomstudium-humanmedizin/diplomarbeit/
 > - https://ub.meduniwien.ac.at/services/plagiatspruefung/
+> - https://www.meduniwien.ac.at/web/fileadmin/content/serviceeinrichtungen/studienabteilung/studierende/MPM_UN_066_329/PDF/Leitfaden_Masterarbeit_de.pdf
+> - https://www.meduniwien.ac.at/web/fileadmin/content/serviceeinrichtungen/studienabteilung/studierende/humanmedizin/pdf/PDFA-Leitfaden_V5.2.pdf
 
 
 ### see [pdf](./thesis-out.pdf)
@@ -34,7 +35,7 @@ You can select which Typst backend to use by setting the `TYPST_BACKEND` variabl
   ```bash
   make TYPST_BACKEND=nix
   ```
-  
+
   You can also specify a different Typst version when using nix:
   ```bash
   make TYPST_BACKEND=nix TYPST_VERSION=ec2389e
