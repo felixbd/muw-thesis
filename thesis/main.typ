@@ -52,6 +52,39 @@
 
 #listoftables
 
+/*
+#outline(
+  title: [List of Figures Tables],
+  target: figure.where(kind: table),
+)
+*/
+
+// #listofequations
+// #equate
+
+#outline(
+  title: [List of Equations],
+  target: math.equation.where(block: true),
+  depth: 1,
+)
+
+#outline(
+  title: [List of math.equation figures],
+  target: figure.where(kind: math.equation),
+)
+
+~
+
+~
+
+#figure(
+  $ tau  $,
+  kind: math.equation,
+  caption: [hello]
+)
+
+
+
 #part("First part")
 
 #include "chapters/ch_main.typ"

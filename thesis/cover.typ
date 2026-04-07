@@ -5,13 +5,13 @@
 #set align(center)
 
 #figure(
-  image("./images/logo/muw-loco-center.svg", width: 60%)
+  image("./images/logo/muw-loco-center.svg", width: 40%)
 )
 
 ~
 
 #text(size: 24pt)[
-  *Diplomarbeit/Masterarbeit*
+  *Diplomarbeit*
 ]
 
 ~
@@ -33,22 +33,18 @@ Zur Erlangung des akademischen Grades
 
 Diplom-Ingenieur (Dipl.-Ing.)
 
-// (gemäß Curriculum)
+(gemäß Curriculum)
 
 Medizinische Informatik
 
-
-
 ~
-
 
 an der 
 
 Medizinischen Universität Wien 
 
 
-ausgeführt am:
-
+// ausgeführt am:
 
 // Institut / Klinik für ...
 
@@ -68,7 +64,7 @@ Name des Co- Betreuers (wenn vorhanden)
 ~
 
 
-eingereicht von 
+eingereicht #datetime.today().display("[day] [month repr:short]. [year repr:last_two]")  von
 
 
 Vorname #smallcaps[Zuname]
