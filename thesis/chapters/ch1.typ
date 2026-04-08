@@ -21,6 +21,16 @@ $
 integral_0^1 f(x) dif x = F(1) - F(0) "et voilà"
 $ <eq:2>
 
+test
+
+#math.equation(
+  $ tau \ pi $,
+  block: true,
+  alt: "hello"
+)
+
+$ tau \ pi $
+
 #lorem(20)
 == Code
 

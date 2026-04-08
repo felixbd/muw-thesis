@@ -39,6 +39,7 @@
 #import "@preview/cheq:0.2.2": checklist
 #import "@preview/zebraw:0.5.5": zebraw
 #import "@preview/tablem:0.2.0": tablem, three-line-table
+#import "@preview/bookly:2.0.0": *
 
 #import "@preview/theorion:0.3.3": *
 // cosmos, caution-box, important-box, warning-box, remark, important-box
@@ -53,14 +54,43 @@
   radius: 4pt, inset: 12pt, ..args
 )
 
+/*
+#import "@preview/equate:0.3.2": equate
+
+#show: equate.with(
+  breakable: true,
+  sub-numbering: true
+)
+*/
+
+// #set math.equation(numbering: "(1.1)")
+
+
+
 #let show-only-on-page-n(page-number: 1, body: none) = context {
   if counter(page).at(here()).first() == page-number { body }
 }
+
+
+#let my-part(title) = {
+  set text(
+    fill: dunkelblau.lighten(10%),
+    font: (
+      "Libre Baskerville",
+      "Libertinus Serif"
+    ),
+  )
+
+  part(title)
+}
+
 
 #let my-config(
   is-draft: is-draft,
   doc
 ) = {
+
+  show outline: set heading(outlined: true)
   
   // line numbers
   set par.line(numbering: if is-draft { "a" } else { none })
@@ -111,7 +141,7 @@
   )
 
   show heading: set text(
-    fill: dunkelblau.lighten(5%),
+    fill: dunkelblau.lighten(10%),
     font: (
       "Libre Baskerville",
       "Libertinus Serif"
@@ -146,6 +176,22 @@
     )
   )
   */
+
+/*
+  show outline.entry: it => [
+    #if it.prefix().fields().children.last().text.trim().len() > 0 [
+      #link(it.element.location())[
+        #it.prefix()
+        // #it.indented(
+        // #h(0.5em)
+        #it.element.alt
+        #box(width: 1fr, it.fill)
+        #it.page() \
+      ]
+    ] else [ ] 
+  ]
+*/
+
   
   set par(justify: true)
 

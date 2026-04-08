@@ -31,6 +31,9 @@ GIT_VERSION := $(shell git describe --tags --first-parent --abbrev=6 --long --al
 # Possible values: 1.4, 1.5, 1.6, 1.7, 2.0, a-1b, a-1a, a-2b, a-2u, a-2a, a-3b, a-3u, a-3a, a-4, a-4f, a-4e, ua-1
 PDF_STANDARD := "a-3b"
 
+# THUMBNAIL-PAGES := "1,2,3-6,8-"
+THUMBNAIL-PAGES := "1"
+
 # Typst compilation flags
 # Date formats: --iso-8601=min, --rfc-3339=sec, --rfc-email
 # Additional options: --font-path ~/fonts/, --make-deps, --ignore-system-fonts, --timings, --open firefox
@@ -64,11 +67,14 @@ c: clean
 
 .PHONY: clean
 clean:
-	rm -f $(OUT)
+	rm -f $(OUT) ./thumbnail-page-*.png
+
+
+t: thumbnail
 
 .PHONY: thumbnail
 thumbnail:
-	$(TYPST) compile -f png --pages '1,2,3-6,8-' --ppi 250 $(SRC) "thumbnail-page-{0p}-of-{t}.png"
+	$(TYPST) compile -f png --pages $(THUMBNAIL-PAGES) --ppi 250 $(SRC) "thumbnail-page-{0p}-of-{t}.png"
 
 .PHONY: check
 check:
