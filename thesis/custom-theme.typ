@@ -1,4 +1,6 @@
-#import "@preview/bookly:2.0.0": *            
+#import "@preview/bookly:2.0.0": *
+
+#import "./preamble.typ": dunkelblau
 
 
 #let custom(colors: default-colors, it) = {
@@ -13,8 +15,15 @@
     place(top)[
       #rect(fill: white, width: 1%, height: 1%)
     ]
+
     set align(left)
-    let type-chapter = if states.isappendix.get() {states.localization.get().appendix} else {states.localization.get().chapter}
+    
+    let type-chapter = if states.isappendix.get() {
+      states.localization.get().appendix
+    } else {
+      states.localization.get().chapter
+    }
+    
     if it.numbering != none {
       v(4em)
       block[
@@ -42,6 +51,8 @@
     ]
   }
 
+  /*
+
   // Outline
   show outline.entry: it => {
     if it.element.func() == heading {
@@ -66,6 +77,8 @@
       it
     }
   }
+
+  */
 
   // Page style
   let page-header = context {
@@ -131,14 +144,31 @@
     dx = 21.68%
   }
 
-  move(dx: dx)[
-    #text(size: 2.5em)[#states.localization.get().part #states.counter-part.get()]
-    #v(1em)
-    #text(size: 3em)[*#title*]
-  ]
+  [
+    #set page(background: [
+      #place(dx: 1cm, dy: 6cm,
+        image("./images/logo/MedUni-Wien.svg", width: 600%)
+      )
+      #box(width: 100%, height: 100%, fill: white.transparentize(5%))
+    ])
 
-  show heading: none
-  heading(numbering: none)[#box[#states.localization.get().part #states.counter-part.get() -- #title]]
+    #set text(
+      fill: dunkelblau.lighten(10%),
+      font: (
+        "Libre Baskerville",
+        "Libertinus Serif"
+      ),
+    )
+
+    #move(dx: dx)[
+      #text(size: 2.5em)[#states.localization.get().part #states.counter-part.get().first()]
+      #v(1em)
+      #text(size: 3em)[*#title*]
+    ]
+
+    #show heading: none
+    #heading(numbering: none)[#box[#states.localization.get().part #states.counter-part.get().first() -- #title]]
+  ]
 
   pagebreak(weak: true, to:"odd")
 }

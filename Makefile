@@ -39,7 +39,7 @@ THUMBNAIL-PAGES := "1"
 # Additional options: --font-path ~/fonts/, --make-deps, --ignore-system-fonts, --timings, --open firefox
 FLAGS := --root=./thesis/ \
 	--pdf-standard $(PDF_STANDARD) \
-	--input gitversion=$(GIT_VERSION) \
+	--input git-version=$(GIT_VERSION) \
 	--input date="`date`"
 
 SRC := ./thesis/main.typ

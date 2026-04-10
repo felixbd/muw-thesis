@@ -42,10 +42,11 @@
 #import "@preview/bookly:2.0.0": *
 
 #import "@preview/theorion:0.3.3": *
+// #import "@preview/theorion:0.6.0": *
 // cosmos, caution-box, important-box, warning-box, remark, important-box
 // #import cosmos.fancy: *
 // #import cosmos.rainbow: *
-#import cosmos.clouds: *
+// #import cosmos.clouds: *
 #show: show-theorion
 
 #import "@preview/shadowed:0.2.0": shadowed as shadowed-original
@@ -71,18 +72,6 @@
   if counter(page).at(here()).first() == page-number { body }
 }
 
-
-#let my-part(title) = {
-  set text(
-    fill: dunkelblau.lighten(10%),
-    font: (
-      "Libre Baskerville",
-      "Libertinus Serif"
-    ),
-  )
-
-  part(title)
-}
 
 
 #let my-config(
@@ -148,18 +137,23 @@
     ),
   )
 
+  /*
   set text(
     font: (
+      "Libertinus Serif",
       // "Fira Sans",
       // "Atkinson Hyperlegible Next",
       // "Atkinson Hyperlegible",
       // "Libertinus Serif",
+      "New Computer Modern",
       "New Computer Modern Sans",
       "DejaVu Sans Mono",
+      "Fira Sans",
     ),
-    slashed-zero: true,
+    // slashed-zero: true,
   )
-  
+  */
+
   show raw: set text(
     font: (
       "Fira Code",
@@ -176,24 +170,10 @@
     )
   )
   */
-
-/*
-  show outline.entry: it => [
-    #if it.prefix().fields().children.last().text.trim().len() > 0 [
-      #link(it.element.location())[
-        #it.prefix()
-        // #it.indented(
-        // #h(0.5em)
-        #it.element.alt
-        #box(width: 1fr, it.fill)
-        #it.page() \
-      ]
-    ] else [ ] 
-  ]
-*/
-
   
   set par(justify: true)
+
+  set cite(style: "alphanumeric")
 
   doc
 }

@@ -1,75 +1,141 @@
-#set page(
-  margin: (top: 15mm),
+#import "@preview/grape-suite:3.1.0": german-dates 
+
+#import "@preview/nth:1.0.1": nth, nths 
+
+
+#import "preamble.typ": *
+// #show: document => my-config(document)
+#show: doc => my-config(
+  is-draft: false,
+  doc
 )
 
-#set align(center)
 
-#figure(
-  image("./images/logo/muw-loco-center.svg", width: 40%)
+#page(
+  // margin: (left: 3cm),
+  background: [
+    #place(dx: 1cm, dy: 6cm,
+      image("./images/logo/MedUni-Wien.svg", width: 600%)
+    )
+
+    #box(width: 100%, height: 100%, fill: white.transparentize(5%))
+  ]
+)[
+
+#show link: set text(fill: blue)
+#show link: underline
+
+#set text(lang: "en", region: "gb")
+
+#show figure.caption: set text(
+  fill: gray.darken(20%),
+  size: 7pt,
+)
+
+#show figure.caption: set align(right)
+
+#set align(center)  // + horizon
+
+#v(-10mm)
+#box(
+  image("./images/logo/muw-loco-center.svg", width: 50%)
 )
 
 ~
 
-#text(size: 24pt)[
-  *Diplomarbeit*
+#line(length: 110%, stroke: .8mm + dunkelblau.lighten(20%))
+
+#set text(
+    fill: dunkelblau.lighten(10%),
+    font: (
+      "Libre Baskerville",
+      "Libertinus Serif"
+    ),
+  )
+
+#text(weight: "bold", size: 34pt)[
+  From Goldfish to Trapezfisch
 ]
 
-~
-
-#text(size: 20pt)[
-  *Titel der Hochschulschrift*
+#text(weight: "semibold", size: 20pt)[
+  Evolutionary Perspectives on Medical Data Pipelines
 ]
 
+#v(3mm)
 
+#line(length: 100%, stroke: .8mm + dunkelblau.lighten(20%))
+
+#v(2cm)
+
+#set text(size: 13pt)
+
+by #[
+  #set text(size: 15pt, weight: "semibold")
+  Alice Bob Charlie #smallcaps[David-Eve]
+] \
+#text(size: 9pt)[12345678]
 
 #v(1fr)
 
-#set text(size: 16pt, weight: "bold")
-// "semibold"
+submitted in partial fulfilment \ of the requirements for the degree of
 
+#text(lang: "de", region: "at")[
+  *Diplom-Ingenieur (Dipl.-Ing.)*
+]
 
-Zur Erlangung des akademischen Grades
-
-
-Diplom-Ingenieur (Dipl.-Ing.)
-
-(gemäß Curriculum)
-
-Medizinische Informatik
+in Medical Informatics
 
 ~
 
-an der 
+Meducal University of Vienna
 
-Medizinischen Universität Wien 
+// Universitätsklinik für Innere Medizin III
+University Hospital for Internal Medicine III
 
-
-// ausgeführt am:
-
-// Institut / Klinik für ...
-
-Institut für Medizinische Statistik
-
-~
+// Klinische Abteilung für Gastroenterologie und Hepatologie
+Division of Endocrinology and Metabolism
 
 
-Unter der Anleitung von: 
+/*
+  Primary Secondary
+  First auditor
+  Second auditor
+*/
+
+#v(1fr)
+#set text(size: 12pt)
+#table(
+  stroke: none, align: left,
+  columns: (auto, auto, auto),
+  [*#nths(1) Supervisor:*], [Prof. Dr. rer. nat. Name], [(MedUni Vienna)],
+  [*#nths(2) Supervisor:*], [Prof. Dr. med. Name], [(MedUni Vienna)],
+  [*#nths(3) Supervisor:*], [O.Univ.Prof. Dipl.-Ing. Dr.techn. Name], [(TU Wien)],
+  // [*#nth(4) Supervisor*], [Univ.Prof. Dipl.-Ing. Dr.techn. Name], [(TU Wien)],
+  [*Place, Date:*], [
+    Vienna,
+    #datetime.today().display(
+      "[day]. [month repr:short] [year]"
+    )
+  ], [],
+  [*Semester:*], [
+    #german-dates.semester(
+      datetime.today(),
+      short: true
+    )
+  ], []
+)
 
 
-Name des Betreuers
 
-Name des Co- Betreuers (wenn vorhanden) 
+#place(bottom + center, dy: 2.3cm)[
+  #box(inset: 1.5mm, radius: .4em, fill: gray.lighten(70%).transparentize(25%))[
+    #set text(fill: black.transparentize(70%))
+    #show link: set text(fill: gray)
+    #link("https://meduniwien.ac.at/")[
+      // #emoji.chain
+      *Git Version:* #sys.inputs.at("git-version", default: "v0.0.0")
+    ]
+  ]
+]
 
-
-~
-
-
-eingereicht #datetime.today().display("[day] [month repr:short]. [year repr:last_two]")  von
-
-
-Vorname #smallcaps[Zuname]
-
-
-// #pagebreak(weak: true, to: "odd")
-// #set page(margin: auto)
- 
+]

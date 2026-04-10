@@ -1,5 +1,7 @@
 #import "@preview/bookly:2.0.0": *
 
+#import "./custom-theme.typ": custom as custom-theme, part as custom-part, minitoc as custom-minitoc
+
 #import "./preamble.typ" as preamble
 #include "./preamble.typ"
 
@@ -10,7 +12,6 @@
   doc
 )
 
-
 #let config-colors = (
   primary: preamble.dunkelblau,
   secondary: rgb("#dddddd").darken(15%)
@@ -20,11 +21,9 @@
 
 #show: bookly.with(
   author: "Author Name",
-  
-  theme: classic,  // classic fancy modern orly pretty
-
+  theme: classic,  // classic fancy modern orly pretty (custom-theme)
   // tufte: true,
-  lang: "de",
+  lang: "en",
   colors: config-colors,
   logo: muw-logo(),  
   
@@ -39,23 +38,61 @@
 
 )
 
+#show: doc => my-config(
+  is-draft: true,
+  doc
+)
+
 #show: front-matter
 
 #include "front_matter/front_main.typ"
 
-
 #tableofcontents
+
+// #pagebreak(weak: true)
+
+= Glossary
+
+// Split in
+// Acronyms / abbreviations
+// and Mathematical symbols / notation
+
+#import "@preview/glossarium:0.5.10": *
+#show: make-glossary
+
+#let glossary = (
+  (
+    key: "cnn",
+    short: "CNN",
+    long: "Convolutional Neural Network",
+    description: "Deep learning architecture for image tasks",
+    group: "Abbreviations",
+  ),
+  (
+    key: "mu",
+    short: $mu$,
+    description: "Population mean",
+    group: "Symbols",
+  ),
+)
+
+#register-glossary(glossary)
+
+#print-glossary(glossary, show-all: true)
+
 
 #show: main-matter
 
 
-#my-part("First part")
+#custom-part("First part")
 
 #include "chapters/ch_main.typ"
 
-#part("Second part")
+#custom-part("Second part")
 
 #show: appendix
+
+#set-theorion-numbering("A.1")
 
 #part("Appendix")  // TODO ...
 
@@ -67,7 +104,7 @@
   $ tau  $,
   kind: math.equation,
   caption: [hello]
-)
+) <eq:fufufufuf>
 
 - - -
 
@@ -90,11 +127,10 @@
   #math.equation(
     alt: "a squared plus b squared equals c squared",
     block: true,
-    
     $ a^2 + b^2 = c^2 \ tau $,
-  )
+  ) <eq:heeeeelo>
 
-  $ a^2 + b^2 = c^2 \ tau $
+  $ a^2 + b^2 = c^2 \ tau $ <eq:abc>
 
 ]
 
@@ -115,6 +151,11 @@ def foo(n: int) -> None:
 ```
 ]
 
+#definition[
+  A natural number is called a _prime number_ if it is greater than 1
+  and cannot be written as the product of two smaller natural numbers.
+]
+
 
 #listoffigures
 
@@ -126,30 +167,40 @@ def foo(n: int) -> None:
   // indent: 10%, depth: 1,
 )
 
-#{
-  show outline.entry: it => [
-    #if it.prefix().fields().children.last().text.trim().len() > 0 [
-      #link(it.element.location())[
-        #it.prefix()
-        // #it.indented(
-        // #h(0.5em)
-        #it.element.alt
-        #box(width: 1fr, it.fill)
-        #it.page() \
-      ]
-    ] else [ ] 
-  ]
+#outline(
+  title: [Table of Theorems],
+  target: figure.where(kind: "theorem")
+)
 
-  // #heading(numbering: none)[List of Equations]
+
+#{
+  show outline.entry: it => if it.prefix().fields().children.last().text.trim().len() > 0 [
+    #link(it.element.location())[
+      #it.prefix() #context it.element.at("label", default: "none")
+      // #it.indented(
+      // #h(0.5em)
+      #it.element.alt
+      #box(width: 1fr, it.fill)
+      #it.page() \
+    ]
+  ] else [ ] 
+  
   outline(
     title: [List of Equations],
     target: math.equation  // .where(block: true),
-    // depth: 1,
   )
 }
 
+
+
+
 // #bibliography("bibliography/sample.yml")
 #bibliography("bibliography/sample.bib")
+
+TODO:
+- https://github.com/typst/typst/pull/7277
+- https://github.com/typst/typst/issues/1097
+
 
 
 #back-cover(

@@ -2,7 +2,7 @@
 Medical University of Vienna thesis template
 
 > [!NOTE]
-> This is not an official template, but it is strongly based on one.
+> This is not an official template<!--, but it is based on one-->.
 > The target audience is primarily medical informatics graduates from MedUni,
 > but this template can also be used for medicine, dentistry or molecular precision medicine.
 > It should also be fairly easy to adapt for doctoral programmes or PhDs.
