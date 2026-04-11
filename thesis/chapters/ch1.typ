@@ -93,20 +93,11 @@ label: <fig:subfig>,
   #lorem(10)
 ]
 
-#theorem(name: "Some theorem")[
-  Theorem content goes here.
-]<thm>
-
-#proof[
-  Complicated proof.
-]<proof>
-
-@proof and @thm[theorem]
-
-
 #important-box[
   #lorem(10)
 ]
+
+#pagebreak(weak: true)
 
 #proof-box[
   #lorem(10)
@@ -117,6 +108,43 @@ label: <fig:subfig>,
 ]
 
 #lorem(1000)#footnote("This is a footnote")
+
+
+#theorem(name: "Some theorem")[
+  Theorem content goes here.
+]<thm>
+
+#proof[
+  Complicated proof.
+  
+  (same number as the theorem above ...)
+]<proof>
+
+@proof and @thm[theorem]
+
+
+
+#lemma()[
+  this is a lemma
+]
+
+#corollary()[
+  this is a corollary
+]
+
+#remark()[
+  this is a remark
+]
+
+#proposition()[
+  this is a proposition
+]
+
+#example()[
+  here an example
+]
+
+
 
 
 #pagebreak()

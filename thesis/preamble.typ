@@ -88,7 +88,6 @@
   
   show: thm-rules
 
-
   // add outlines (table of theorems, etc.) to toc
   show outline: set heading(outlined: true)
 
@@ -187,8 +186,6 @@
   set par(justify: true)
 
   set cite(style: "alphanumeric")
-
-  set outline(title: "context states.localization.get().toc", indent: 1em)
 
   doc
 }

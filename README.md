@@ -60,3 +60,29 @@ You can select which Typst backend to use by setting the `TYPST_BACKEND` variabl
 - `make clean` or `make c`: Remove generated PDF
 - `make thumbnail`: Generate PNG thumbnails of specific pages
 - `make check`: Run typst package check
+
+
+## typst package requirements
+
+```sh
+grep -rho '@preview/[^"]*' ./thesis/**/*.typ | sort -u
+```
+
+```txt
+@preview/bookly:1.0.0
+@preview/bookly:1.1.2
+@preview/bookly:2.0.0
+@preview/cheq:0.2.2
+@preview/curryst:0.5.1
+@preview/equate:0.3.2
+@preview/glossarium:0.5.10
+@preview/grape-suite:3.1.0
+@preview/lemmify:0.1.8
+@preview/meander:0.4.2
+@preview/nth:1.0.1
+@preview/quick-maths:0.2.1
+@preview/shadowed:0.2.0
+@preview/tablem:0.2.0
+@preview/zebraw:0.5.5
+```
+

@@ -11,7 +11,7 @@ TYPST_BACKEND ?= nix
 
 # Typst version for nix backend
 # Override from command line: `make TYPST_VERSION=ec2389e`
-TYPST_VERSION ?= ec2389e  # typst 0.14.2 (ec2389e)
+TYPST_VERSION ?= ec2389e  # typst 0.14.2
 
 # Configure TYPST command based on selected backend
 ifeq ($(TYPST_BACKEND),nix)
@@ -57,6 +57,10 @@ v: version
 .PHONY: version
 version:
 	$(TYPST) --version
+
+# r: requirements
+# requirements:
+#	echo `grep -rho '@preview/[^"]*' ./thesis/**/*.typ` | sort -u > ./requirements.txt
 
 w: watch
 
