@@ -63,7 +63,7 @@
 
 #v(3mm)
 
-#line(length: 100%, stroke: .8mm + dunkelblau.lighten(20%))
+#line(length: 105%, stroke: .8mm + dunkelblau.lighten(20%))
 
 #v(2cm)
 
@@ -90,7 +90,7 @@ in Medical Informatics
 Meducal University of Vienna
 
 // Universitätsklinik für Innere Medizin III
-University Hospital for Internal Medicine III
+University Hospital for Internal Medicine #numbering("I", 3)
 
 // Klinische Abteilung für Gastroenterologie und Hepatologie
 Division of Endocrinology and Metabolism
@@ -113,8 +113,11 @@ Division of Endocrinology and Metabolism
   // [*#nth(4) Supervisor*], [Univ.Prof. Dipl.-Ing. Dr.techn. Name], [(TU Wien)],
   [*Place, Date:*], [
     Vienna,
-    #datetime.today().display(
-      "[day]. [month repr:short] [year]"
+    #sys.inputs.at(
+      "date",
+      default: datetime.today().display(
+        "[day]. [month repr:short] [year]"  // repr:last_two
+      )
     )
   ], [],
   [*Semester:*], [

@@ -3,6 +3,10 @@
 // #show: chapter.with(title: "Abstract", toc: false)
 #show: chapter-nonum.with()
 
-= Abstract DE
+#set text(lang: "de", region: "at")
+
+= Zusammenfassung
 
 #lorem(500)
+
+#set text(lang: "en", region: "gb")

@@ -7,10 +7,7 @@
 
 #import "preamble.typ": *
 // #show: document => my-config(document)
-#show: doc => my-config(
-  is-draft: true,
-  doc
-)
+#show: doc => my-config(doc)
 
 #let config-colors = (
   primary: preamble.dunkelblau,
@@ -49,8 +46,6 @@
 
 #tableofcontents
 
-// #pagebreak(weak: true)
-
 = Glossary
 
 // Split in
@@ -78,6 +73,7 @@
 
 #register-glossary(glossary)
 
+// TODO: add groups as headings -> include in toc
 #print-glossary(glossary, show-all: true)
 
 
@@ -92,9 +88,10 @@
 
 #show: appendix
 
-#set-theorion-numbering("A.1")
+// TODO:
+// #set-theorion-numbering("A.1")
 
-#part("Appendix")  // TODO ...
+#custom-part("Appendix", show-number: false)
 
 #include "appendix/app_main.typ"
 
@@ -151,26 +148,40 @@ def foo(n: int) -> None:
 ```
 ]
 
+/*
 #definition[
   A natural number is called a _prime number_ if it is greater than 1
   and cannot be written as the product of two smaller natural numbers.
 ]
-
+*/
 
 #listoffigures
 
 #listoftables
 
 #outline(
-  title: [List of Listings],
+  title: [List of listings],
   target: figure.where(kind: raw),
   // indent: 10%, depth: 1,
 )
 
+
+#outline(
+  title: [List of theorems],
+  target: figure.where(kind: "thm-group")
+)
+
+/*
 #outline(
   title: [Table of Theorems],
   target: figure.where(kind: "theorem")
 )
+
+#outline(
+  title: [Table of Definitions],
+  target: figure.where(kind: "definition")
+)
+*/
 
 
 #{
@@ -186,25 +197,27 @@ def foo(n: int) -> None:
   ] else [ ] 
   
   outline(
-    title: [List of Equations],
+    title: [List of equations],
     target: math.equation  // .where(block: true),
   )
 }
 
-
-
-
+/*
+  TODO:
+  - https://github.com/typst/typst/pull/7277
+  - https://github.com/typst/typst/issues/1097
+*/
 // #bibliography("bibliography/sample.yml")
 #bibliography("bibliography/sample.bib")
 
-TODO:
-- https://github.com/typst/typst/pull/7277
-- https://github.com/typst/typst/issues/1097
 
 
 
 #back-cover(
-  abstracts: ((title: [Abstracts], text: lorem(100)), ),
+  abstracts: (
+    (title: [Abstracts], text: lorem(100)),
+    (title: [#set text(lang: "de"); Zusammenfassung], text: lorem(100)),
+  ),
   logo: (
     align(left)[#muw-logo(width: 70%)],
     align(right)[#image("images/typst-logo.svg", width: 50%)]

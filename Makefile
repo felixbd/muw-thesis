@@ -52,6 +52,12 @@ default: $(OUT) open
 $(OUT): $(SRC)
 	$(TYPST) compile $(FLAGS) $< $@
 
+v: version
+
+.PHONY: version
+version:
+	$(TYPST) --version
+
 w: watch
 
 watch: $(OUT) open

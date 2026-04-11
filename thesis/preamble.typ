@@ -31,23 +31,32 @@
 
 // --------------------------------------------------------------------------------
 
-
-#let is-draft = false
-
+// for shorthand math notation
 #import "@preview/quick-maths:0.2.1": shorthands
+
+// for prooftrees
 #import "@preview/curryst:0.5.1": rule, prooftree
+
+// for checklists in md style
 #import "@preview/cheq:0.2.2": checklist
+
+// for code blocks / listings
 #import "@preview/zebraw:0.5.5": zebraw
+
+// for nice tables in md format
 #import "@preview/tablem:0.2.0": tablem, three-line-table
+
+// for book layout
 #import "@preview/bookly:2.0.0": *
 
-#import "@preview/theorion:0.3.3": *
-// #import "@preview/theorion:0.6.0": *
-// cosmos, caution-box, important-box, warning-box, remark, important-box
-// #import cosmos.fancy: *
-// #import cosmos.rainbow: *
-// #import cosmos.clouds: *
-#show: show-theorion
+// for theorems / proofs / definitons
+#import "@preview/lemmify:0.1.8": *
+#let (
+  theorem, lemma, corollary,
+  remark, proposition, example,
+  proof, rules: thm-rules
+) = default-theorems("thm-group", lang: "en")
+
 
 #import "@preview/shadowed:0.2.0": shadowed as shadowed-original
 
@@ -67,20 +76,22 @@
 // #set math.equation(numbering: "(1.1)")
 
 
-
 #let show-only-on-page-n(page-number: 1, body: none) = context {
   if counter(page).at(here()).first() == page-number { body }
 }
 
 
-
 #let my-config(
-  is-draft: is-draft,
+  is-draft: false,
   doc
 ) = {
-
-  show outline: set heading(outlined: true)
   
+  show: thm-rules
+
+
+  // add outlines (table of theorems, etc.) to toc
+  show outline: set heading(outlined: true)
+
   // line numbers
   set par.line(numbering: if is-draft { "a" } else { none })
   
@@ -88,15 +99,17 @@
   set page(
     background: if not is-draft { none } else {
       rotate(24deg,
-        text(45pt, fill: rgb(80%, 20%, 20%, 25%))[
-          Unpublished working draft. \
-          Not for distribution.
-        ]
+        pdf.artifact(
+          text(45pt, fill: rgb(80%, 20%, 20%, 25%))[
+            Unpublished working draft. \
+            Not for distribution.
+          ]
+        )
       )
     }
   )
 
-  show: show-theorion
+  
   
   show quote: e => {
     shadowed[
@@ -174,6 +187,8 @@
   set par(justify: true)
 
   set cite(style: "alphanumeric")
+
+  set outline(title: "context states.localization.get().toc", indent: 1em)
 
   doc
 }
