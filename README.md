@@ -1,5 +1,8 @@
 # muw-thesis
+
 Medical University of Vienna thesis template
+
+### see [example pdf](./thesis-out.pdf)
 
 ![thumbnail](./thumbnail-page-01-of-56.png)
 
@@ -16,9 +19,6 @@ Medical University of Vienna thesis template
 > - https://ub.meduniwien.ac.at/services/plagiatspruefung/
 > - https://www.meduniwien.ac.at/web/fileadmin/content/serviceeinrichtungen/studienabteilung/studierende/MPM_UN_066_329/PDF/Leitfaden_Masterarbeit_de.pdf
 > - https://www.meduniwien.ac.at/web/fileadmin/content/serviceeinrichtungen/studienabteilung/studierende/humanmedizin/pdf/PDFA-Leitfaden_V5.2.pdf
-
-
-### see [pdf](./thesis-out.pdf)
 
 
 ## Building
