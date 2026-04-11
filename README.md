@@ -1,6 +1,8 @@
 # muw-thesis
 Medical University of Vienna thesis template
 
+![thumbnail](./thumbnail-page-01-of-56.png)
+
 > [!NOTE]
 > This is not an official template<!--, but it is based on one-->.
 > The target audience is primarily medical informatics graduates from MedUni,
