@@ -4,7 +4,7 @@ Medical University of Vienna thesis template
 
 ### see [example pdf](./thesis-out.pdf)
 
-![thumbnail](./thumbnail-page-01-of-56.png)
+![thumbnail](./thumbnail-page-01.png)
 
 > [!NOTE]
 > This is not an official template<!--, but it is based on one-->.

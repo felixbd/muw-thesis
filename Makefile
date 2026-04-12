@@ -84,7 +84,8 @@ t: thumbnail
 
 .PHONY: thumbnail
 thumbnail:
-	$(TYPST) compile -f png --pages $(THUMBNAIL-PAGES) --ppi 250 $(SRC) "thumbnail-page-{0p}-of-{t}.png"
+	# $(TYPST) compile -f png --pages $(THUMBNAIL-PAGES) --ppi 250 $(SRC) "thumbnail-page-{0p}-of-{t}.png"
+	$(TYPST) compile $(FLAGS) -f png --pages $(THUMBNAIL-PAGES) --ppi 250 $(SRC) "thumbnail-page-{0p}.png"
 
 .PHONY: check
 check:
