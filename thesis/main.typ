@@ -36,7 +36,7 @@
 )
 
 #show: doc => my-config(
-  is-draft: true,
+  is-draft: false,
   doc
 )
 

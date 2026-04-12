@@ -47,7 +47,7 @@ OUT := ./thesis-out.pdf
 # "./thesis-`date --iso-8601=sec`.pdf"
 
 
-default: $(OUT) open
+default: $(OUT) thumbnail open
 
 $(OUT): $(SRC)
 	$(TYPST) compile $(FLAGS) $< $@

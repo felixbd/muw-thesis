@@ -4,7 +4,7 @@
 #import "./../preamble.typ": *
 // #show: document => my-config(document)
 #show: doc => my-config(
-  is-draft: true,
+  // is-draft: false,
   doc
 )
 
