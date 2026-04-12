@@ -85,6 +85,7 @@
   is-draft: false,
   doc
 ) = {
+  set page(paper: "a4")
   
   show: thm-rules
 

@@ -174,7 +174,7 @@ def foo(n: int) -> None:
       #context smallcaps(str(
         it.element.at(
           "label",
-          default: "no lebel set")
+          default: "")
         ).replace("eq:", "")
       )
       #it.element.alt
