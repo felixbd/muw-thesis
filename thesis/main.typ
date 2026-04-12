@@ -148,12 +148,7 @@ def foo(n: int) -> None:
 ```
 ]
 
-/*
-#definition[
-  A natural number is called a _prime number_ if it is greater than 1
-  and cannot be written as the product of two smaller natural numbers.
-]
-*/
+
 
 #listoffigures
 
@@ -171,25 +166,17 @@ def foo(n: int) -> None:
   target: figure.where(kind: "thm-group")
 )
 
-/*
-#outline(
-  title: [Table of Theorems],
-  target: figure.where(kind: "theorem")
-)
-
-#outline(
-  title: [Table of Definitions],
-  target: figure.where(kind: "definition")
-)
-*/
-
 
 #{
   show outline.entry: it => if it.prefix().fields().children.last().text.trim().len() > 0 [
     #link(it.element.location())[
-      #it.prefix() #context it.element.at("label", default: "none")
-      // #it.indented(
-      // #h(0.5em)
+      #it.prefix()
+      #context smallcaps(str(
+        it.element.at(
+          "label",
+          default: "no lebel set")
+        ).replace("eq:", "")
+      )
       #it.element.alt
       #box(width: 1fr, it.fill)
       #it.page() \
