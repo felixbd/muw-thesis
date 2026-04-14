@@ -7,11 +7,30 @@
 //   numbered: false
 // )
 
+
+#import "./../preamble.typ": *
+// #show: document => my-config(document)
+#show: doc => my-config(
+  // is-draft: false,
+  doc
+)
+
 #show: chapter-nonum
+
 = Introduction
 
 == Goals
-#lorem(100)
+
+#dropcap[
+  *Example*
+  #lorem(100)
+]
+
+
+#quote(attribution: [Random #smallcaps[Name]])[
+  #lorem(15)
+]
+
 
 #lorem(25)
 

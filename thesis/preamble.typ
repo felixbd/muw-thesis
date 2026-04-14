@@ -31,6 +31,9 @@
 
 // --------------------------------------------------------------------------------
 
+// page margins
+// #import "@preview/marginalia:0.2.3" as marginalia: note, notefigure, wideblock
+
 // for shorthand math notation
 #import "@preview/quick-maths:0.2.1": shorthands
 
@@ -48,6 +51,9 @@
 
 // for book layout
 #import "@preview/bookly:2.0.0": *
+
+// for dropped capitals
+#import "@preview/droplet:0.3.1": dropcap as dropcap-original
 
 // for theorems / proofs / definitons
 #import "@preview/lemmify:0.1.8": *
@@ -80,6 +86,51 @@
   if counter(page).at(here()).first() == page-number { body }
 }
 
+#let dropcap-counter = counter("dropcap-counter")
+#dropcap-counter.update(0)
+
+#let dropcap(x) = {
+  dropcap-counter.step()
+  
+  dropcap-original(
+    // hanging-indent: 1em,
+    // overhang: 8pt,
+    // font: "Fira Code",
+    height: 3,
+    justify: true,
+    gap: 4pt,
+    transform: letter => context {
+      let height = measure(letter).at("height", default: 3mm)
+      let current-chapter-mod-3 = calc.rem( counter(heading).at(here()).first(), 3)
+  
+      grid(columns: 2, gutter: 6pt,
+        align(center + horizon,
+          text(fill: dunkelblau.lighten(20%))[
+            #if current-chapter-mod-3 == 0 {
+              $bb(#letter)$
+            }
+            #if current-chapter-mod-3 == 1 {
+              $frak(#letter)$
+            }
+            #if current-chapter-mod-3 == 2 {
+              $cal(#letter)$
+            }
+          ]
+         // text(font: "Goudy Initialen")[h]
+        ),
+        // Use "place" to ignore the line's height when
+        // the font size is calculated later on.
+        place(horizon, line(
+          angle: 90deg,
+          length: height + 6pt,
+          stroke: dunkelblau.lighten(60%) + 1pt
+        )),
+      )
+    }
+  )[#x]
+}
+
+
 
 #let my-config(
   is-draft: false,
@@ -94,6 +145,25 @@
 
   // line numbers
   set par.line(numbering: if is-draft { "a" } else { none })
+
+  // show: marginalia.setup.with(
+    // inner: ( far: 5mm, width: 15mm, sep: 5mm ),
+    // outer: ( far: 5mm, width: 15mm, sep: 5mm ),
+    // top: 2.5cm,
+    // bottom: 2.5cm,
+    // book: false,
+    // clearance: 12pt,
+    /* inner: (far: 11mm, width: 20mm, sep: 8mm),
+    outer: (far: 11mm, width: 40mm, sep: 8mm),
+    top: 32mm + 11pt,
+    bottom: 16mm,
+    book: true, */
+    // clearance: 30pt,
+  // )
+
+  /* show: marginalia.show-frame.with(
+    stroke: 2pt + gray.transparentize(70%), // if is-draft {  } else { none }
+  ) */
   
   // draft info in background
   set page(
